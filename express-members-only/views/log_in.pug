@@ -1,0 +1,15 @@
+h1 Log in
+form(action="/log-in", method="POST")
+  label(for="email") Email 
+  input(id="email", name="email", type="email")
+  label(for="password") Password 
+  input(id="password", name="password", type="password")
+  button(type="submit") Log In
+
+// Display error message
+if (typeof error !== 'undefined')
+  p.error= error
+
+// Flash messages
+each message in messages
+  p= message
