@@ -6,10 +6,11 @@ form(action="/log-in", method="POST")
   input(id="password", name="password", type="password")
   button(type="submit") Log In
 
-// Display error message
+if user
+  a(href="/log-out") Logout
+
 if (typeof error !== 'undefined')
   p.error= error
 
-// Flash messages
 each message in messages
   p= message

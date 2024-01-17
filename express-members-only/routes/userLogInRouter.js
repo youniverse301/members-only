@@ -5,8 +5,9 @@ const asyncHandler = require('express-async-handler');
 const userLogInController = require('../controllers/userLogInController');
 
 // Display Log In form on GET.
-router.get('/', userLogInController.user_login_get);
-
+router.get('/',  (req, res) => {
+    res.render('log_in', { user: req.user, error: undefined, messages: [] });
+});
 // Handle Log In form on POST.
 router.post('/', (req, res, next) => {
     passport.authenticate('local', (err, user, info) => {
@@ -28,6 +29,6 @@ router.post('/', (req, res, next) => {
           return res.redirect('/');
        });
     })(req, res, next);
-}); 
+});
 
 module.exports = router;

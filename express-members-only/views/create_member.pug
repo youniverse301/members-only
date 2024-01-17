@@ -1,20 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title></title>
-</head>
-<body>
-  <h1>Become a member</h1>
-  <form action="" method="POST">
-    <label for="passcode">Passcode</label>
-    <input name="passcode" type="password" required/>
-    <button type="submit">Submit</button>
-  </form>
-</body>
-</html>
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    title
 
-if errors
-  ul
-    for error in errors
-      li!= error.msg
+  body
+    h1 Become a member
+    form(action="", method="POST")
+      label(for="passcode") Passcode
+      input(id="passcode", name="passcode", type="password", required)
+      button(type="submit") Submit
+
+    if errors
+      ul
+        each error in errors
+          li= error.msg

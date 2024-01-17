@@ -20,8 +20,8 @@ db.on("error", console.error.bind(console, "mongo connection error"));
 const localBecomeMemberAuth = passport.authenticate('local-become-member');
 
 passport.use('local', new LocalStrategy({
-  usernameField: 'email',  // Match this with your form field
-  passwordField: 'password' // Match this with your form field
+  usernameField: 'email',
+  passwordField: 'password'
   },
   async (email, password, done) => {
     try {
@@ -58,11 +58,13 @@ passport.deserializeUser(async (id, done) => {
   }
 });
 
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const messageRouter = require("./routes/messageRouter");
 const userSignUpRouter = require("./routes/userSignUpRouter");
 const userLogInRouter = require("./routes/userLogInRouter");
+const userLogOutRouter = require("./routes/userLogOutRouter");
 const memberRouter = require("./routes/memberRouter");
 
 var app = express();
@@ -86,7 +88,8 @@ app.use('/users', usersRouter);
 app.use("/create-message", messageRouter);
 app.use("/create-user", userSignUpRouter);
 app.use('/log-in', userLogInRouter);
-app.use("/become-member", memberRouter({ localBecomeMemberAuth }));
+app.use('/log-out', userLogOutRouter);
+app.use("/become-member", memberRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
