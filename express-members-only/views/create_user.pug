@@ -1,28 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title></title>
-</head>
-<body>
-  <h1>Sign Up</h1>
-  <form action="" method="POST">
-    <label for="firstname">First name</label>
-    <input name="firstname" type="text" required/>
-    <label for="lastname">Last name</label>
-    <input name="lastname" type="text" required/>
-    <label for="email">Email</label>
-    <input name="email" type="email" required/>
-    <label for="password">Password</label>
-    <input name="password" type="password" required/>
-    <label for="confirmPassword">Confirm Password:</label>
-    <input name="confirmPassword" type="password" required>
-    <button type="submit">Submit</button>
-  </form>
-</body>
-</html>
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    title
+    
+  body
+    h1 Sign Up
+    form(action="", method="POST")
+      label(for="firstname") First name
+      input(name="firstname", type="text", required)
+      label(for="lastname") Last name
+      input(name="lastname", type="text", required)
+      label(for="email") Email
+      input(name="email", type="email", required)
+      label(for="password") Password
+      input(name="password", type="password", required)
+      label(for="confirmPassword") Confirm Password:
+      input(name="confirmPassword", type="password", required)
+      button(type="submit") Submit
 
-if errors
-  ul
-    for error in errors
-      li!= error.msg
+    if errors
+      ul
+        each error in errors
+          li= error.msg

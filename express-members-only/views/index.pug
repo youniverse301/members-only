@@ -3,10 +3,27 @@ extends layout
 block content
   h1= "header"
   if user
-    a(href="/log-out") Log Out
+    if user.status !== "member"
+      a(href="/become-member") Become Member
+    a(href="/log-out") Log Out 
+    a(href="/new-message") New Message
   else
-    a(href="/sign-up") Sign Up
+    a(href="/sign-up") Sign Up 
     a(href="/log-in") Log In
 
   h1= title
   p Welcome to #{title}
+
+  if messages.length
+    if user
+      each message in messages
+        div
+          h3= message.title
+          em= "by " + message.author.first_name
+          p= message.text
+          p= message.timestamp
+    else
+      each message in messages
+        div
+          h3= message.title
+          p= message.text

@@ -1,4 +1,3 @@
-// Import required modules
 const asyncHandler = require("express-async-handler");
 const User = require('../models/user');
 const { body, validationResult } = require("express-validator");

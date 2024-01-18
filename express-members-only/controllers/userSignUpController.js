@@ -50,8 +50,8 @@ exports.user_create_post = asyncHandler(async (req, res, next) => {
       // Save the user to the database
       const result = await user.save();
   
-      // Redirect to the home page or another appropriate page
-      res.redirect('/');
+      // Redirect to the login page
+      res.redirect('/log-in');
     } catch (err) {
       // Handle any errors that occur during user creation
       return next(err);
