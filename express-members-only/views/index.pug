@@ -3,10 +3,12 @@ extends layout
 block content
   h1= "header"
   if user
-    if user.status !== "member"
-      a(href="/become-member") Become Member
+    a(href="/new-message") New Message 
+    if user.status !== "member" && user.status !== "admin"
+      a(href="/become-member") Become Member 
+    if user.status !== "admin"
+      a(href="/become-admin") Admin Mode 
     a(href="/log-out") Log Out 
-    a(href="/new-message") New Message
   else
     a(href="/sign-up") Sign Up 
     a(href="/log-in") Log In

@@ -5,5 +5,3 @@ const { body, validationResult } = require("express-validator");
 exports.user_login_get = asyncHandler(async (req, res, next) => {
     res.render("log_in");
 });
-
-  // Display Log In form on POST.

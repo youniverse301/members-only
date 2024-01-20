@@ -19,18 +19,17 @@ const logCurrentUser = async (req, res, next) => {
     }
 };
 
-// Display Member create form on GET.
-exports.member_create_get = [logCurrentUser, asyncHandler(async (req, res, next) => {
-    res.render("create_member");
-})];
+// Display admin form on GET.
+exports.admin_create_get = asyncHandler(async (req, res, next) => {
+    res.render("create_admin");
+});
 
-// Display Member create form on POST.
-exports.member_create_post = [logCurrentUser, asyncHandler(async (req, res, next) => {
+exports.admin_create_post = [logCurrentUser, asyncHandler(async (req, res, next) => {
     // Check for validation errors
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         // If there are validation errors, render the form again with error messages
-        return res.render('create_member', { errors: errors.array() });
+        return res.render('create_admin', { errors: errors.array() });
     }
 
     try {
@@ -41,14 +40,14 @@ exports.member_create_post = [logCurrentUser, asyncHandler(async (req, res, next
             console.log(currentUser);
 
             // Check if the entered passcode is correct
-            const enteredPasscode = req.body.passcode;
+            const enteredPasscode = req.body.adminPasscode;
             if (enteredPasscode !== "test123") {
                 // Handle the case where the passcode is incorrect
-                return res.render('create_member', { errors: [{ msg: 'Incorrect passcode.' }] });
+                return res.render('create_admin', { errors: [{ msg: 'Incorrect passcode.' }] });
             }
 
             // Update the status of the current user
-            currentUser.status = "member";
+            currentUser.status = "admin";
 
             // Save the updated user to the database
             const result = await currentUser.save();
@@ -57,7 +56,7 @@ exports.member_create_post = [logCurrentUser, asyncHandler(async (req, res, next
             res.redirect('/');
         } else {
             // Handle the case where the user is not authenticated
-            return res.render('create_member', { errors: [{ msg: 'User not authenticated.' }] });
+            return res.render('create_admin', { errors: [{ msg: 'User not authenticated.' }] });
         }
     } catch (err) {
         // Handle any errors that occur during the update

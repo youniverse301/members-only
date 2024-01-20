@@ -1,0 +1,17 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    title
+
+  body
+    h1 Become an admin
+    form(action="", method="POST")
+      label(for="adminPasscode") Passcode
+      input(id="adminPasscode", name="adminPasscode", type="password", required)
+      button(type="submit") Submit
+
+    if errors
+      ul
+        each error in errors
+          li= error.msg
