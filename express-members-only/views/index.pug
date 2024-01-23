@@ -18,12 +18,24 @@ block content
 
   if messages.length
     if user
-      each message in messages
-        div
-          h3= message.title
-          em= "by " + message.author.first_name
-          p= message.text
-          p= message.timestamp
+      if user.status === "member"
+        each message in messages
+          div
+            h3= message.title
+            em= "by " + message.author.first_name
+            p= message.text
+            p= message.timestamp   
+      if user.status === "admin"
+        each message in messages
+          div
+            h3= message.title
+            em= "by " + message.author.first_name
+            p= message.text
+            p= message.timestamp 
+            p= "admin"
+            form(action="/delete-message", method="post")
+              input(type="hidden", name="messageId", value=message._id)
+              button(type="submit") Delete
     else
       each message in messages
         div
