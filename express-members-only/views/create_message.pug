@@ -1,8 +1,38 @@
-doctype html
-html(lang="en")
-  head
-    meta(charset="UTF-8")
-    title
+extends layout
+
+block content
+  div.header
+    a.homeButton(href="/")
+        span.purpleText= "Members "
+        | only chat
+    if user
+      div.headerButtons
+        a(href="/new-message")
+          img(src="images/new-message.png" alt="New message button")
+          | NEW
+          span.pinkText= "MESSAGE"
+        if user.status !== "member" && user.status !== "admin"
+          a(href="/become-member")
+            img(src="images/member.png" alt="Become member button")
+            | BECOME A 
+            span.purpleText.memberBtnText= "MEMBER"
+        if user.status !== "admin"
+          a(href="/become-admin")
+            img(src="images/admin.png" alt="Become admin button")
+            span.tealText= "ADMIN"
+            | MODE
+        a(href="/log-out")
+          img(src="images/logout.png" alt="Logout button")
+          | LOG OUT
+    else
+      div.headerButtons
+        a.signUpBtn(href="/sign-up")
+          img(src="images/signup.png" alt="Sign Up button")
+          | SIGN UP
+        a.logInBtn(href="/log-in")
+          img(src="images/login.png" alt="Login button")
+          | LOG IN
+  title
     
   body
     h1 New Message

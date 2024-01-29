@@ -1,43 +1,93 @@
 extends layout
 
 block content
-  h1= "header"
-  if user
-    a(href="/new-message") New Message 
-    if user.status !== "member" && user.status !== "admin"
-      a(href="/become-member") Become Member 
-    if user.status !== "admin"
-      a(href="/become-admin") Admin Mode 
-    a(href="/log-out") Log Out 
-  else
-    a(href="/sign-up") Sign Up 
-    a(href="/log-in") Log In
-
-  h1= title
-  p Welcome to #{title}
-
-  if messages.length
+  div.header
+    a.homeButton(href="/")
+        span.purpleText= "Members "
+        | only chat
     if user
-      if user.status === "member"
-        each message in messages
-          div
-            h3= message.title
-            em= "by " + message.author.first_name
-            p= message.text
-            p= message.timestamp   
-      if user.status === "admin"
-        each message in messages
-          div
-            h3= message.title
-            em= "by " + message.author.first_name
-            p= message.text
-            p= message.timestamp 
-            p= "admin"
-            form(action="/delete-message", method="post")
-              input(type="hidden", name="messageId", value=message._id)
-              button(type="submit") Delete
+      div.headerButtons
+        a(href="/new-message")
+          img(src="images/new-message.png" alt="New message button")
+          | NEW
+          span.pinkText= "MESSAGE"
+        if user.status !== "member" && user.status !== "admin"
+          a(href="/become-member")
+            img(src="images/member.png" alt="Become member button")
+            | BECOME A 
+            span.purpleText.memberBtnText= "MEMBER"
+        if user.status !== "admin"
+          a(href="/become-admin")
+            img(src="images/admin.png" alt="Become admin button")
+            span.tealText= "ADMIN"
+            | MODE
+        a(href="/log-out")
+          img(src="images/logout.png" alt="Logout button")
+          | LOG OUT
     else
-      each message in messages
-        div
-          h3= message.title
-          p= message.text
+      div.headerButtons
+        a.signUpBtn(href="/sign-up")
+          img(src="images/signup.png" alt="Sign Up button")
+          | SIGN UP
+        a.logInBtn(href="/log-in")
+          img(src="images/login.png" alt="Login button")
+          | LOG IN
+
+  div.indexBody
+    h1.indexTitle
+        | Special chat for 
+        span.purpleText= "members" 
+        |  only
+    p Everybody can send 
+      span.pinkText= "messages"
+    p Non-
+      span.purpleText= "members "
+      | can only see message titles and bodies
+    p Only 
+      span.purpleText= "members "
+      | can see the message author and date
+
+    div.messageContainer
+      if messages.length
+        if user
+          if user.status === "member"
+            each message in messages
+              div.message
+                div.messageTop
+                  h3= message.title
+                  em= message.formattedTimestamp 
+                div.messageMid  
+                  em= "by "
+                  span.authorName= message.author.first_name  
+                div.messageBot              
+                  p= message.text
+          if user.status === "admin"
+            each message in messages
+              div.message
+                div.messageTop
+                  h3= message.title
+                  em= message.formattedTimestamp 
+                div.messageMid
+                  em= "by "
+                  span.authorName= message.author.first_name
+                div.messageBot
+                  p= message.text
+                  form(action="/delete-message", method="post")
+                    input(type="hidden", name="messageId", value=message._id)
+                    button.deleteBtn(type="submit") 
+                      img(src="images/delete.png" alt="Delete message button")
+                      | Delete
+          if user.status === "none"
+            each message in messages
+              div.message
+                div.messageTop
+                  h3= message.title
+                div.messageBot
+                  p= message.text
+        else
+          each message in messages
+            div.message
+                div.messageTop
+                  h3= message.title
+                div.messageBot
+                  p= message.text

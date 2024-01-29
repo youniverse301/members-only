@@ -1,5 +1,32 @@
-doctype html
-html(lang="en")
+extends layout
+
+block content
+  div.header
+      a.homeButton(href="/") Top Secret Chat
+      if user
+        div.headerButtons
+          a(href="/new-message")
+            img(src="images/new-message.png" alt="New message button")
+            | NEW MESSAGE
+          if user.status !== "member" && user.status !== "admin"
+            a(href="/become-member")
+              img(src="images/member.png" alt="Become member button")
+              | BECOME A MEMBER
+          if user.status !== "admin"
+            a(href="/become-admin")
+              img(src="images/admin.png" alt="Become admin button")
+              | ADMIN MODE
+          a(href="/log-out")
+            img(src="images/logout.png" alt="Logout button")
+            | LOG OUT
+      else
+        div.headerButtons
+          a.signUpBtn(href="/sign-up")
+            img(src="images/signup.png" alt="Sign Up button")
+            | SIGN UP
+          a.logInBtn(href="/log-in")
+            img(src="images/login.png" alt="Login button")
+            | LOG IN
   head
     meta(charset="UTF-8")
     title

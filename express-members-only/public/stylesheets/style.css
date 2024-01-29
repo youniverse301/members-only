@@ -1,8 +1,165 @@
 body {
-  padding: 50px;
+  display: flex;
+  flex-direction: column;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #1D232A;
 }
 
 a {
   color: #00B7FF;
+  text-decoration: none;
+}
+
+h1 {
+  color: white;
+}
+
+p, h3, em, label {
+  color: #A6ACBA;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 30px;
+}
+
+.indexBody {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  padding-top: 15px;
+  text-align: center;
+}
+
+.indexBody > p {
+  font-size: 1.4rem;
+  margin: 10px;
+}
+
+.indexTitle{
+  font-size: 3.5rem;
+  font-weight: bold;
+}
+
+.homeButton {
+  color: #A6ACBA;
+  font-size: 1.5rem;
+  padding: 10px;
+  border-radius: 7px;
+}
+
+.headerButtons {
+  display: flex;
+  align-items: center;
+}
+
+.headerButtons > a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #A6ACBA;
+  font-size: .8rem;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 7px;
+}
+
+.homeButton:hover {
+  background-color: #383E47;
+}
+
+.headerButtons > a:hover {
+  background-color: #383E47;
+}
+
+.messageContainer {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-content: space-around;
+  max-width: 512px;
+  width: 100%;
+  padding-top: 40px;
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  grid-template-columns: 1fr 1fr;
+  padding-left: 30px;
+  padding-right: 20px;
+  padding-bottom: 30px;
+  padding-top: 20px;
+  margin-bottom: 20px;
+  background-color: #15191E;
+  border-radius: 15px;
+  gap: 10px;
+}
+
+.messageTop, .messageBot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.messageMid {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.authorName {
+  color: #6419E6;
+  font-style: italic;
+  font-weight: bold;
+  font-size: .95rem;
+}
+
+.messageTop > h3 {
+  font-size: 1.3rem;
+  margin: 0;
+}
+
+.messageTop > em {
+  font-size: .8rem;
+}
+
+.messageBot > p {
+  margin: 0;
+}
+
+.memberBtnText {
+  font-size: .95rem;
+}
+
+.purpleText {
+  color: #6419E6;
+}
+
+.pinkText {
+  color: #D827A9;
+}
+
+.tealText {
+  color: #22A99E;
+}
+
+.deleteBtn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  color: #A6ACBA;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.deleteBtn:hover {
+  background-color: #383E47;
+  border-radius: 7px;
 }

@@ -1,4 +1,5 @@
 var express = require('express');
+const moment = require('moment');
 const Message = require('../models/message');
 const asyncHandler = require('express-async-handler');
 var router = express.Router();
@@ -6,6 +7,11 @@ var router = express.Router();
 router.get('/', asyncHandler(async (req, res, next) => {
   // Fetch all messages from the database
   const messages = await Message.find().sort({ timestamp: -1 }).populate('author').exec();
+
+  // Format timestamps
+  messages.forEach(message => {
+    message.formattedTimestamp = moment(message.timestamp).fromNow();
+  });
 
   // Render the template with the messages
   res.render('index', { user: req.user, title: 'Index', messages });

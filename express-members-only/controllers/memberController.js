@@ -21,7 +21,7 @@ const logCurrentUser = async (req, res, next) => {
 
 // Display Member create form on GET.
 exports.member_create_get = [logCurrentUser, asyncHandler(async (req, res, next) => {
-    res.render("create_member");
+    res.render("create_member", { user: req.user, });
 })];
 
 // Display Member create form on POST.

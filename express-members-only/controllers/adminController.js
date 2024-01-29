@@ -21,7 +21,7 @@ const logCurrentUser = async (req, res, next) => {
 
 // Display admin form on GET.
 exports.admin_create_get = asyncHandler(async (req, res, next) => {
-    res.render("create_admin");
+    res.render("create_admin", { user: req.user, });
 });
 
 exports.admin_create_post = [logCurrentUser, asyncHandler(async (req, res, next) => {
