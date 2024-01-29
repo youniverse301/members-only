@@ -3,6 +3,8 @@ body {
   flex-direction: column;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: #1D232A;
+  height: 100vh;
+  margin: 0;
 }
 
 a {
@@ -24,7 +26,7 @@ p, h3, em, label {
   justify-content: space-between;
   padding-left: 50px;
   padding-right: 50px;
-  padding-top: 30px;
+  padding-top: 40px;
 }
 
 .indexBody {
@@ -162,4 +164,64 @@ p, h3, em, label {
 .deleteBtn:hover {
   background-color: #383E47;
   border-radius: 7px;
+}
+
+.bodyContainer {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  max-width: 400px;
+  gap: 20px;
+  padding-bottom: 50px;
+}
+
+.bodyContainer > h1 {
+  margin: 0;
+  font-size: 2.3rem;
+}
+
+.bodyContainer > p {
+  margin: 0;
+  font-size: .95rem;
+
+}
+
+.messageForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.messageTitle {
+  background: none;
+  border: 1px solid #383E47;
+  border-radius: 5px;
+  height: 45px;
+  resize: none;
+  color: #969CAA;
+  line-height: 45px;
+  font-size: 1rem;
+  padding: 0 10px; 
+}
+
+.messageBody {
+  background: none;
+  border: 1px solid #383E47;
+  border-radius: 5px;
+  resize: vertical;
+  box-sizing: border-box;
+  height: 110px;
+  color: #969CAA;
+  resize: none;
+}
+
+.messageForm > button {
+  padding: 15px;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  background-color: #D827A9;
 }

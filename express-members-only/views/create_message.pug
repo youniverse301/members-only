@@ -34,14 +34,20 @@ block content
           | LOG IN
   title
     
-  body
-    h1 New Message
-    form(action="", method="POST")
+  div.bodyContainer
+    h1 New 
+        span.pinkText= "message"
+    p= "Hi, "
+        span.pinkText= user.first_name
+    p= "What's on "
+        span.pinkText= "your "
+        | mind?
+    form.messageForm(action="", method="POST")
       label(for="title") Title
-      input(name="title", type="text", required)
+      textarea.messageTitle(name="title", type="text", required)
       label(for="text") Text
-      input(name="text", type="text", required)
-      button(type="submit") Submit
+      textarea.messageBody(name="text", type="text", required)
+      button(type="submit") SUBMIT
 
     if errors
       ul
