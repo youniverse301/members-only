@@ -2,49 +2,61 @@ extends layout
 
 block content
   div.header
-      a.homeButton(href="/") Top Secret Chat
-      if user
-        div.headerButtons
-          a(href="/new-message")
-            img(src="images/new-message.png" alt="New message button")
-            | NEW MESSAGE
-          if user.status !== "member" && user.status !== "admin"
-            a(href="/become-member")
-              img(src="images/member.png" alt="Become member button")
-              | BECOME A MEMBER
-          if user.status !== "admin"
-            a(href="/become-admin")
-              img(src="images/admin.png" alt="Become admin button")
-              | ADMIN MODE
-          a(href="/log-out")
-            img(src="images/logout.png" alt="Logout button")
-            | LOG OUT
-      else
-        div.headerButtons
-          a.signUpBtn(href="/sign-up")
-            img(src="images/signup.png" alt="Sign Up button")
-            | SIGN UP
-          a.logInBtn(href="/log-in")
-            img(src="images/login.png" alt="Login button")
-            | LOG IN
+    a.homeButton(href="/")
+        span.purpleText= "Members "
+        | only chat
+    if user
+      div.headerButtons
+        a(href="/new-message")
+          img(src="images/new-message.png" alt="New message button")
+          | NEW
+          span.pinkText= "MESSAGE"
+        if user.status !== "member" && user.status !== "admin"
+          a(href="/become-member")
+            img(src="images/member.png" alt="Become member button")
+            | BECOME A 
+            span.purpleText.memberBtnText= "MEMBER"
+        if user.status !== "admin"
+          a(href="/become-admin")
+            img(src="images/admin.png" alt="Become admin button")
+            span.tealText= "ADMIN"
+            | MODE
+        a(href="/log-out")
+          img(src="images/logout.png" alt="Logout button")
+          | LOG OUT
+    else
+      div.headerButtons
+        a.signUpBtn(href="/sign-up")
+          img(src="images/signup.png" alt="Sign Up button")
+          | SIGN UP
+        a.logInBtn(href="/log-in")
+          img(src="images/login.png" alt="Login button")
+          | LOG IN
   head
     meta(charset="UTF-8")
     title
     
-  body
+  div.bodyContainer
     h1 Sign Up
-    form(action="", method="POST")
-      label(for="firstname") First name
-      input(name="firstname", type="text", required)
-      label(for="lastname") Last name
-      input(name="lastname", type="text", required)
-      label(for="email") Email
-      input(name="email", type="email", required)
-      label(for="password") Password
-      input(name="password", type="password", required)
-      label(for="confirmPassword") Confirm Password:
-      input(name="confirmPassword", type="password", required)
-      button(type="submit") Submit
+    form.signUpForm(action="", method="POST")
+      div.signUpTop
+        div.upFirstName
+          label(for="firstname") First name
+          input(name="firstname", type="text", required)
+        div.upLastName
+          label(for="lastname") Last name
+          input(name="lastname", type="text", required)
+      div.upEmail
+        label(for="email") Email
+        input(name="email", type="email", required)
+      div.signUpBot
+        div.upPassword
+          label(for="password") Password
+          input(name="password", type="password", required)
+        div.upConfirm
+          label(for="confirmPassword") Confirm Password
+          input(name="confirmPassword", type="password", required)
+      button(type="submit") SUBMIT
 
     if errors
       ul

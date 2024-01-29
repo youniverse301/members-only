@@ -173,7 +173,7 @@ p, h3, em, label {
   justify-content: center;
   height: 100%;
   width: 100%;
-  max-width: 400px;
+  max-width: 435px;
   gap: 20px;
   padding-bottom: 50px;
 }
@@ -224,4 +224,53 @@ p, h3, em, label {
   border: none;
   color: white;
   background-color: #D827A9;
+}
+
+.signUpTop, .signUpBot {
+  display: flex;
+  justify-content: space-between;
+}
+
+.upEmail {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 7px;
+  padding-bottom: 15px;
+}
+
+.upEmail > input, .upFirstName > input, .upLastName > input, .upPassword > input, .upConfirm > input {
+  background: none;
+  border: 1px solid #383E47;
+  border-radius: 10px;
+  height: 45px;
+  color: #969CAA;
+  line-height: 45px;
+  font-size: 1rem;
+  padding: 0 10px; 
+}
+
+.upFirstName, .upLastName, .upPassword, .upConfirm {
+  display: flex;
+  flex-direction: column;
+  width: 47%;
+  gap: 7px;
+  padding-bottom: 15px;
+}
+
+.messageForm > button {
+  padding: 15px;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  background-color: #D827A9;
+}
+
+.signUpForm > button {
+  padding: 15px;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  background-color: #6419E6;
+  width: 100%;
 }
