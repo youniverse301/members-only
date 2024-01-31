@@ -16,7 +16,7 @@ h1 {
   color: white;
 }
 
-p, h3, em, label {
+p, h3, em, label, li {
   color: #A6ACBA;
 }
 
@@ -52,11 +52,27 @@ p, h3, em, label {
   font-size: 1.5rem;
   padding: 10px;
   border-radius: 7px;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .headerButtons {
   display: flex;
   align-items: center;
+  gap: 25px;
+}
+
+@media (max-width: 1020px) {
+  .header {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 770px) {
+  .headerButtons {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .headerButtons > a {
@@ -68,6 +84,7 @@ p, h3, em, label {
   font-weight: bold;
   padding: 10px;
   border-radius: 7px;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .homeButton:hover {
@@ -258,6 +275,10 @@ p, h3, em, label {
   padding-bottom: 15px;
 }
 
+.upFirstName > label, .upLastName > label, .upPassword > label, .upConfirm > label, .upEmail > label {
+  padding-left: 3px;
+}
+
 .messageForm > button {
   padding: 15px;
   border-radius: 10px;
@@ -266,11 +287,32 @@ p, h3, em, label {
   background-color: #D827A9;
 }
 
-.signUpForm > button {
+.signUpForm > button, .signInForm > button {
   padding: 15px;
   border-radius: 10px;
   border: none;
   color: white;
   background-color: #6419E6;
   width: 100%;
+  cursor: pointer;
+}
+
+#hintBtn {
+  padding: 15px;
+  position: absolute;
+  bottom: 7%;
+  right: 5%;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  background-color: #1D232A;
+  color: #1D232A;
+  width: 275px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+#hintBtn:hover {
+  background-color: #383E47;
+  color: #A6ACBA;
 }

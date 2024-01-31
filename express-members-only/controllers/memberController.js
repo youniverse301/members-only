@@ -42,7 +42,7 @@ exports.member_create_post = [logCurrentUser, asyncHandler(async (req, res, next
 
             // Check if the entered passcode is correct
             const enteredPasscode = req.body.passcode;
-            if (enteredPasscode !== "test123") {
+            if (enteredPasscode !== "@bladeecity") {
                 // Handle the case where the passcode is incorrect
                 return res.render('create_member', { errors: [{ msg: 'Incorrect passcode.' }] });
             }
