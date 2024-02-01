@@ -297,6 +297,16 @@ p, h3, em, label, li {
   cursor: pointer;
 }
 
+.adminForm > button {
+  padding: 15px;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  background-color: #22A99E;
+  width: 100%;
+  cursor: pointer;
+}
+
 #hintBtn {
   padding: 15px;
   position: absolute;

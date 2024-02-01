@@ -37,6 +37,12 @@ exports.user_create_post = asyncHandler(async (req, res, next) => {
   
       // Hash the password using bcrypt
       const hashedPassword = await bcrypt.hash(req.body.password, 10);
+
+      // Check if the email already exists in the database
+      const existingUser = await User.findOne({ email: req.body.email });
+      if (existingUser) {
+        return res.render('create_user', { errors: [{ msg: 'Email already exists.' }] });
+      }
   
       // Create a new User instance with the sanitized and validated data
       const user = new User({
