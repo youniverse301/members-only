@@ -12,7 +12,7 @@ const mongoose = require("mongoose");
 const bcrypt = require('bcrypt');
 require('dotenv').config()
 
-const mongoDb = MONGODB_URI;
+const mongoDb = process.env.MONGODB_URI;
 mongoose.connect(mongoDb);
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "mongo connection error"));
