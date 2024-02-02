@@ -285,6 +285,7 @@ p, h3, em, label, li {
   border: none;
   color: white;
   background-color: #D827A9;
+  cursor: pointer;
 }
 
 .signUpForm > button, .signInForm > button {
