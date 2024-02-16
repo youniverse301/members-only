@@ -17,8 +17,6 @@ mongoose.connect(mongoDb);
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "mongo connection error"));
 
-const localBecomeMemberAuth = passport.authenticate('local-become-member');
-
 passport.use('local', new LocalStrategy({
   usernameField: 'email',
   passwordField: 'password'
